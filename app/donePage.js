@@ -19,7 +19,7 @@ export default function DonePage() {
   // RETRIEVE PARAMETERS THAT WERE POSTED BY A PREVIOUS PAGE
   const params = useLocalSearchParams();
 
-  console.log('params from dateWizard:', params);
+  // console.log('params from dateWizard:', params);
 
   return (
     // HEADER

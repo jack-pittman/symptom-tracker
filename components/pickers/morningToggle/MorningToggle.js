@@ -13,7 +13,7 @@ export default function MorningToggle() {
     // // SET DEFAULT SEARCH PARAMS (if toggle isn't pressed)
     // router.setParams({ ...params, "morningBool": "PM" });
 
-    console.log('params from the perspective of MorningToggle:', params);
+    // console.log('params from the perspective of MorningToggle:', params);
 
     // USE THIS TO MANAGE BUTTON STATE
     const [morningBool, setMorningBool] = useState('PM');

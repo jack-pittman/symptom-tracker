@@ -22,7 +22,7 @@ export default function TimeWizard() {
   // RETRIEVE PARAMETERS THAT WERE POSTED BY A PREVIOUS PAGE
   const params = useLocalSearchParams();
 
-  console.log('params from symptomWizard:', params);
+  // console.log('params from symptomWizard:', params);
 
   return (
     // HEADER
