@@ -74,6 +74,23 @@ export default function checkoutPage() {
   
   // console.log('params from dateWizard:', params);
 
+  const [text, setText] = useState('');
+
+  // HANDLE DOT COLOR CHANGE
+
+  function getCategoryColor(category) {
+    switch (category) {
+        case 'Pain':
+            return Colors.salmon; // Replace with your desired color
+        case 'Nausea':
+            return Colors.turmericYellow; // Replace with your desired color
+        case 'Headache':
+            return Colors.lightPurple;
+        default:
+            return Colors.lightGray; // Default color if category is not matched
+    }
+  }
+
   return (
     // HEADER
     <SafeAreaView style={styles.safeAreaView}>
@@ -102,9 +119,16 @@ export default function checkoutPage() {
 
             { /* NAME AND DESCRIPTION ROW */}
             <View style={historyStyles.symptomRow}>
-              <Text style={historyStyles.topText}>
-                {symptomCategory}
-              </Text>
+              
+              <View style={historyStyles.topRow}>
+                <View style={{ ...historyStyles.tagDot, backgroundColor: getCategoryColor(symptomCategory) }}></View>
+
+
+                <Text style={historyStyles.topText}>
+                  {symptomCategory}
+                </Text>
+              </View>
+
             </View>
 
             {/* DATE AND TIME ROW */}
@@ -117,6 +141,19 @@ export default function checkoutPage() {
               </Text>
             </View>
 
+          </View>
+
+          <View style={historyStyles.notesWrapper}>
+            <View style={historyStyles.notesContainer}>
+              {/* <Text style={historyStyles.notesText}>Notes: </Text> */}
+              <TextInput
+                    style={historyStyles.notesText}
+                    placeholder="Notes:"
+                    placeholderTextColor={'darkgray'}
+                    value={text}
+                    onChangeText={(inputText) => setText(inputText)}
+                />
+            </View>
           </View>
         </View>
       </ScrollView>
@@ -138,6 +175,7 @@ export default function checkoutPage() {
             sCategory={symptomCategory}
             sTime={symptomTime}
             sDate={symptomDate}
+            sNotes={text}
             
             buttonText="Create"
             buttonBackground={Colors.jungleGreen}

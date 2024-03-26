@@ -3,6 +3,7 @@ import { StyleSheet, ScrollView, SafeAreaView, Text, View, Image, TouchableOpaci
 import { Stack, useRouter } from 'expo-router';
 import styles from '../styles/general';
 import CalendarWidget from '../components/calendarWidget/CalendarWidget';
+import TrophyCabinet from '../components/trophyCabinet/TrophyCabinet';
 import ActionButton from '../components/actionButton/ActionButton';
 import { Colors } from '../styles/colors';
 
@@ -30,7 +31,8 @@ export default function Page() {
       />
 
       {/* Slick Calendar Widget (not functional yet) */}
-      <CalendarWidget />
+      {/* <CalendarWidget /> */}
+      <TrophyCabinet />
 
       {/* Button Scroll View */}
       <ScrollView style={styles.blueScrollView}>
@@ -52,7 +54,7 @@ export default function Page() {
 
       {/* Footer */}
       <View style={styles.footer}>
-        <TouchableOpacity style={styles.footerOption} onPress={() => router.push('/databaseTester')}>
+        <TouchableOpacity style={styles.footerOption} onPress={() => router.push('/404Page')}>
           <Image source={require('../assets/icons/achievementsIcon.png')} style={styles.footerImage} />
         </TouchableOpacity>
 

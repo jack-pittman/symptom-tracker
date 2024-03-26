@@ -47,8 +47,8 @@ export default function SymptomWizard() {
         <View style={styles.buttonContainer}>
           <ActionButton 
             buttonText="Headache"
-            buttonBackground="#BCACF2"
-            textColor="#75679D"
+            buttonBackground={Colors.lightPurple}
+            textColor={Colors.darkPurple}
             destination={{
               pathname: "/timeWizard",
               params: { category: "Headache"},
@@ -76,7 +76,7 @@ export default function SymptomWizard() {
           />
           <ActionButton 
             buttonText="Other"
-            buttonBackground="#9DB5CA"
+            buttonBackground={Colors.lightGray}
             textColor={Colors.darkGray}
             destination={{
               pathname: "/timeWizard",

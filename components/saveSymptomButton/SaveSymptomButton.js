@@ -5,7 +5,7 @@ import { router, useRouter } from 'expo-router';
 import dataStore from '../../app/database'; // Import the dataStore
 
 
-export default function SaveSymptomButton({ buttonText, textColor, buttonBackground, destination, sCategory, sTime, sDate}) {
+export default function SaveSymptomButton({ buttonText, textColor, buttonBackground, destination, sCategory, sTime, sDate, sNotes}) {
     
     const router = useRouter();
 
@@ -33,15 +33,21 @@ export default function SaveSymptomButton({ buttonText, textColor, buttonBackgro
             category: sCategory,
             startTime: sTime,
             startDate: sDate,
+            notes: sNotes,
         };
 
-        dataStore.symptomData.push({ category: sCategory, startDate: sTime, startTime: sDate });
+        // dataStore.symptomData.push({ category: sCategory, startDate: sTime, startTime: sDate });
+
+        dataStore.symptomData.push(newEntry);
+
         // RETRIEVE AND MODIFY DATA.JSON
 
         console.log("symptom saved!!!!");
         console.log("Category: " + sCategory);
         console.log("sTime: " + sTime);
         console.log("sDate: " + sDate);
+        console.log("sNotes: " + sNotes);
+
     }
 
     return (

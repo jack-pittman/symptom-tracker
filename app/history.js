@@ -11,10 +11,26 @@ import dataStore from './database'; // Import the dataStore
 export default function History() {
   const router = useRouter();
 
-  useEffect(() => {
-    // Example of adding data to dataStore
-    // dataStore.symptomData.push({ category: 'Headache', startDate: '1/8/2024', startTime: '6:00 PM' });
-  }, []);
+  function truncateText(text, maxLength) {
+    if (text.length > maxLength) {
+        return text.substring(0, maxLength) + '...';
+    } else {
+        return text;
+    }
+  }
+
+  function getCategoryColor(category) {
+    switch (category) {
+        case 'Pain':
+            return Colors.salmon; // Replace with your desired color
+        case 'Nausea':
+            return Colors.turmericYellow; // Replace with your desired color
+        case 'Headache':
+            return Colors.lightPurple;
+        default:
+            return Colors.lightGray; // Default color if category is not matched
+    }
+  }
 
   return (
     // HEADER
@@ -37,19 +53,36 @@ export default function History() {
       />
 
       <ScrollView style={historyStyles.scrollView}>
-        {dataStore.symptomData.map((item, index) => (
-          <View style={historyStyles.symptomContainer} key={index}>
-            {/* NAME AND DESCRIPTION ROW */}
-            <View style={historyStyles.symptomRow}>
-              <Text style={historyStyles.topText}>{item.category}</Text>
+
+        <View style={historyStyles.listWrapper}>
+
+          {dataStore.symptomData.map((item, index) => (
+
+            <View style={historyStyles.symptomContainer} key={index}>
+              {/* NAME AND DESCRIPTION ROW */}
+              <View style={historyStyles.symptomRow}>
+
+                <View style={historyStyles.topRow}>
+
+                  {/* DYNAMIC DOT */}
+                  <View style={{ ...historyStyles.tagDot, backgroundColor: getCategoryColor(item.category) }}></View>
+
+                  <Text style={historyStyles.topText}>{item.category}</Text>
+                </View>
+
+                <Text style={historyStyles.topTextNotes}>{truncateText(item.notes, 15)}</Text>
+              </View>
+
+              <View style={historyStyles.symptomRow}>
+                <Text style={historyStyles.bottomText}>{item.startTime}</Text>
+                <Text style={historyStyles.bottomText}>{item.startDate}</Text>
+              </View>
             </View>
 
-            <View style={historyStyles.symptomRow}>
-              <Text style={historyStyles.bottomText}>{item.startTime}</Text>
-              <Text style={historyStyles.bottomText}>{item.startDate}</Text>
-            </View>
-          </View>
-        ))}
+          ))}
+
+        </View>
+
       </ScrollView>
 
       {/* FOOTER */}
