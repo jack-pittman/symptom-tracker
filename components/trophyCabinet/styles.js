@@ -29,10 +29,11 @@ const styles = StyleSheet.create({
     },
     trophyArray: {
         flexDirection: 'row',
+        gap: 5,
     },
     trophyIcon: {
-        width: 50,
-        height: 50, 
+        width: 40,
+        height: 40, 
     },
     rightSide: {
         backgroundColor: Colors.darkGray,
