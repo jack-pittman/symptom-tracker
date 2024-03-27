@@ -10,6 +10,8 @@ import { Colors } from '../styles/colors';
 
 import ActionButton from '../components/actionButton/ActionButton';
 import EmptyPromptBox from '../components/emptyPromptBox/EmptyPromptBox';
+import TrophyAlert from '../components/trophyAlert/TrophyAlert';
+
 
 
 
@@ -45,6 +47,8 @@ export default function DonePage() {
       <EmptyPromptBox 
         headerText={'All Done!'}
       />
+
+      <TrophyAlert />
 
       <View style={{ flex: 1, justifyContent: 'flex-start', alignItems: 'center', marginTop: 100, }}>
           {/* <Text style={styles.notFoundBody}>You can view and edit your Symptom in your health history.</Text> */}

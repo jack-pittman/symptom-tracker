@@ -5,6 +5,8 @@ import { useFocusEffect } from '@react-navigation/native';
 import styles from './styles.js';
 
 import SymptomCount from "./SymptomCount.js";
+import trophyImages from "./TrophyImages.js";
+
 
 
 
@@ -17,7 +19,7 @@ export default function TrophyCabinet() {
 
 
     function symptomCountTrophyRender() {
-        var bronzeMileStone = 5; 
+        var bronzeMileStone = 1; 
         
         if (SymptomCount() > bronzeMileStone) {
             return "bronze";
@@ -31,11 +33,11 @@ export default function TrophyCabinet() {
 
     var trophyType = symptomCountTrophyRender();
 
-    const trophyImages = {
-        bronze: require('../../assets/icons/bronze.png'),
-        blank: require('../../assets/icons/blank.png'),
-        // Add other trophy types as needed
-    };
+    // const trophyImages = {
+    //     bronze: require('../../assets/icons/bronze.png'),
+    //     blank: require('../../assets/icons/blank.png'),
+    //     // Add other trophy types as needed
+    // };
 
     return (
         <View style={styles.horizontalFlex}>
@@ -50,8 +52,8 @@ export default function TrophyCabinet() {
             </View>
 
             <View style={styles.rightSide}>
-                <Text style={styles.smallMonthText}>JAN</Text>
-                <Text style={styles.bigDateText}>8</Text>
+                <Text style={styles.smallMonthText}>DAY</Text>
+                <Text style={styles.bigDateText}>1</Text>
             </View>
         </View>
     )
