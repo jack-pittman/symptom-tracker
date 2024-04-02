@@ -26,6 +26,20 @@ export default function TrophyAlert() {
             console.log("bronze");
         }
 
+        var silverMileStone = 2; 
+        
+        if (SymptomCount() == silverMileStone + 1) {
+            return "silver";
+            console.log("silver");
+        }
+
+        var goldMileStone = 3; 
+        
+        if (SymptomCount() == goldMileStone + 1) {
+            return "gold";
+            console.log("gold");
+        }
+
         else {
             return "blank";
         }
