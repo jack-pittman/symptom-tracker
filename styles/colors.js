@@ -8,6 +8,7 @@ export const Colors = {
     
     turmericYellow: "#F0D060",
 
+    lightJungleGreen: "#b6e1cd",
     jungleGreen: "#4FC0C0",
     darkJungleGreen: "#347F7F",
 

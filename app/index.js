@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, ScrollView, SafeAreaView, Text, View, Image, TouchableOpacity } from 'react-native';
 import { Stack, useRouter } from 'expo-router';
 import styles from '../styles/general';
@@ -7,11 +7,29 @@ import TrophyCabinet from '../components/trophyCabinet/TrophyCabinet';
 import ActionButton from '../components/actionButton/ActionButton';
 import { Colors } from '../styles/colors';
 
+import SymptomCount from "../components/trophyCabinet/SymptomCount.js";
+
 export default function Page() {
   const router = useRouter();
 
+  // change background color to green after symptom count reaches 5
+
+  const [customStyle, setCustomStyle] = useState({});
+
+  useEffect(() => {
+    const count = SymptomCount();
+    if (count > 5) {
+      console.log(SymptomCount());
+      const newStyle = {
+        backgroundColor: Colors.lightJungleGreen,
+        // flex: 1,
+      };
+      setCustomStyle(newStyle);
+    } 
+  }, []);
+
   return (
-    <SafeAreaView style={styles.safeAreaView}>
+    <SafeAreaView style={{ ...styles.safeAreaView, ...customStyle }}>
 
       {/* Header */}
       <Stack.Screen 
@@ -35,7 +53,7 @@ export default function Page() {
       <TrophyCabinet />
 
       {/* Button Scroll View */}
-      <ScrollView style={styles.blueScrollView}>
+      <ScrollView style={{...styles.blueScrollView, ...customStyle}}>
         <View style={styles.buttonContainer}>
           <ActionButton 
             buttonText="Daily Check-in"
@@ -53,7 +71,7 @@ export default function Page() {
       </ScrollView>
 
       {/* Footer */}
-      <View style={styles.footer}>
+      <View style={{ ...styles.footer, ...customStyle}}>
         <TouchableOpacity style={styles.footerOption} onPress={() => router.push('/404Page')}>
           <Image source={require('../assets/icons/achievementsIcon.png')} style={styles.footerImage} />
         </TouchableOpacity>
